@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HistoryGPT Explorer</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="app">
+      <aside class="sidebar">
+        <h1>HistoryGPT</h1>
+        <p class="subtitle">Discovery engine for YouTube history creators</p>
+
+        <div class="search-wrap">
+          <input id="searchInput" type="search" placeholder="Search figures, wars, inventions, eras..." />
+        </div>
+
+        <section>
+          <h2>Categories</h2>
+          <div id="categoryList" class="category-list"></div>
+        </section>
+
+        <section class="filters">
+          <h2>Filters</h2>
+          <label>Importance
+            <input id="importanceRange" type="range" min="1" max="10" value="1" />
+          </label>
+          <label>Popularity
+            <input id="popularityRange" type="range" min="1" max="10" value="1" />
+          </label>
+          <label>Region
+            <select id="regionSelect">
+              <option value="all">All Regions</option>
+              <option value="Europe">Europe</option>
+              <option value="Asia">Asia</option>
+              <option value="Africa">Africa</option>
+              <option value="Americas">Americas</option>
+              <option value="Middle East">Middle East</option>
+              <option value="Global">Global</option>
+            </select>
+          </label>
+          <label>Time Period
+            <select id="periodSelect">
+              <option value="all">All Time</option>
+              <option value="ancient">Ancient (-3000 to 500)</option>
+              <option value="medieval">Medieval (500-1500)</option>
+              <option value="modern">Modern (1500+)</option>
+            </select>
+          </label>
+        </section>
+      </aside>
+
+      <main class="timeline-shell">
+        <header class="timeline-topbar">
+          <div>
+            <strong>Interactive Timeline</strong>
+            <span id="viewLabel"></span>
+          </div>
+          <div class="legend">
+            <span><i class="dot turning"></i> Turning points</span>
+            <span><i class="dot unusual"></i> Unusual events</span>
+            <span><i class="dot cluster"></i> Clusters</span>
+          </div>
+        </header>
+        <canvas id="timelineCanvas"></canvas>
+      </main>
+
+      <aside class="details-panel">
+        <h2>Wikimedia Ingestion</h2>
+        <div class="pipeline-actions">
+          <button id="ingestBtn" class="action-btn">Import from Wikidata + Wikipedia</button>
+          <button id="clearCacheBtn" class="action-btn secondary">Clear API Cache</button>
+        </div>
+        <div id="pipelineStatus" class="pipeline-status">Ready to import structured events.</div>
+
+        <h2>Event Insights</h2>
+        <div id="eventDetails" class="details-content">
+          <p>Select an event dot to unlock context, related stories, and creator angles.</p>
+        </div>
+      </aside>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
